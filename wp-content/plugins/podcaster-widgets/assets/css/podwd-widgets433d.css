@@ -1,0 +1,52 @@
+  /* Widget: Highlight Category */
+  .thst_highlight_category_widget ul li:first-child .text {
+    padding:14px;
+  }
+  .thst_highlight_category_widget ul li .text {
+    padding:14px;
+  }
+  .thst_highlight_category_widget ul li:last-child .text {
+    padding:14px;
+  }
+  .thst_highlight_category_widget ul li .text .h_title {
+    font-size: 14px !important;
+  }
+
+  /* Widget: Recent Blog Posts */
+  .widget.thst_recent_blog_widget .ui-tabs-nav li {
+    font-size: 12px !important;
+  }
+  .widget.thst_recent_blog_widget .ui-tabs-nav li a {
+    padding:10px 0;
+  }
+  .widget.thst_recent_blog_widget .ui-tabs-nav li.ui-tabs-active a:link,
+  .widget.thst_recent_blog_widget .ui-tabs-nav li.ui-tabs-active a:visited {
+    padding:10px 0;
+  }
+  .widget.thst_recent_blog_widget .ui-tabs-panel article {
+    padding: 14px;
+  }
+  .widget.thst_recent_blog_widget .ui-tabs-panel article img {
+    margin-right:14px;
+  }
+  .widget.thst_recent_blog_widget .ui-tabs-panel article .text .date {
+    font-size: 10px !important;
+  }
+  .widget.thst_recent_blog_widget .ui-tabs-panel article .text h4 {
+    font-size: 14px !important;
+  }
+
+  /* Widget: Recent Comments */
+  .widget.thst_recent_comments_widget h3 {
+    padding:0;
+  }
+  .widget.thst_recent_comments_widget ul li.recentcomments {
+    padding:14px 14px 14px 0;
+  }
+  .widget.thst_recent_comments_widget ul .recentcomments img.avatar {
+    margin-right:14px;
+    display: block;
+  }
+  .widget.thst_recent_comments_widget ul li.recentcomments .date {
+    margin-top:7px;
+  }
