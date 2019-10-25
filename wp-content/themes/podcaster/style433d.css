@@ -2760,9 +2760,9 @@ header #menu {
   margin-right: 3.5%;
 }
 
- width: 31%;  
+ 
 .hosts-container .hosts-content .host .host-inner {
-  padding: 32px;
+  padding: 32px !important;
 }
 .hosts-container .hosts-content .host:nth-of-type(3n+3) {
   margin-left: 0;
