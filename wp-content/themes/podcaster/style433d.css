@@ -7417,9 +7417,46 @@ footer.main-footer nav .thst-menu li:hover > .sub-menu li {
   -webkit-transition-duration:0.4s;
   -o-transition-duration:0.4s;
 }
+
+.social_icon_big:before {
+  font-family: FontAwesomeBrands;
+  display: inline-block;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: normal;
+  padding:24px;
+  color:#fff;
+  background: rgba(0,0,0,0.1);
+  border-radius: 3px;
+  margin-bottom:5px;
+  transition-duration:0.4s;
+  -moz-transition-duration:0.4s;
+  -webkit-transition-duration:0.4s;
+  -o-transition-duration:0.4s;
+}
+
 .dark-icons .social_icon:before {
   color:#222;
 }
+
+.pod-button {
+     
+  background-position: 0 15px;
+  background-repeat: no-repeat no-repeat;
+  background-size: 30px 590px;
+  color: #000;
+    flex: 0 1 35%;
+  font-size: 17px;
+  font-weight: 400;
+  margin-right: 30px;
+  padding: 20px 0 20px 40px;
+  text-decoration: none;
+  transition-delay: 0s;
+  transition-duration: .2s;
+  transition-property: transform;
+  transition-timing-function: ease;
+    }
+
 .social_icon:hover:before {
   transition-duration:0.4s;
   -moz-transition-duration:0.4s;
