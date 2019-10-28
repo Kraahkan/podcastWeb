@@ -151,8 +151,8 @@ var pod_loadmore_params = {"ajaxurl":"http:\/\/demo.themestation.co\/podcaster-g
 .textshadow {
   
  
-  -webkit-filter: drop-shadow(0px 1px 1px #888);
-  filter: drop-shadow(0px 1px 1px #888);
+  -webkit-filter: drop-shadow(0px 2px 2px #555);
+  filter: drop-shadow(0px 2px 2px #555);
 
 }
 
@@ -1157,7 +1157,7 @@ $.ajax({
     console.log(data.items[0].enclosure.link);
       
       
-       var title = '<h2 style="font-weight: 500; font-family: Oswald;" class="textshadow">Featured Episode: ' + data.items[0].title + '</h2>'
+       var title = '<h3 style="font-weight: 500; color:white !important; font-family: Oswald; margin: 0px; margin-top:24px;" class="textshadow">Featured Episode</h3><h1 style=" margin: 0px; margin-top: 6px; margin-bottom: 12px; ">' + data.items[0].title + '</h1>'
        var description = '<p class="textshadow">' + data.items[0].description + '</p>'
     
                                             
@@ -1245,7 +1245,7 @@ $.ajax({
                                         
                                         <div class="main-featured-post audio audio-url clearfix"><div class="">
                                             
-                                             <img class="" width="300" src="wp-content/uploads/logo.png"/>
+                                             <img class="" width="250" src="wp-content/uploads/logo.png"/>
                                             
                                             
                                             
@@ -1373,7 +1373,7 @@ $.ajax({
 										
 									
                                         
-                                        <img width="200" src="wp-content/uploads/mountain.png"/ style="" >
+                                        <!--<img width="200" src="wp-content/uploads/mountain.png"/ style="" >-->
 										
 																			</div><!-- .call-to-action-form -->
 								</div><!-- .newsletter-content-container -->
@@ -1396,9 +1396,9 @@ $.ajax({
 
 <div class="sub-footer">
 	<div class="container">
-		<div class="row" >
+		<div class="row"  style="text-align:center !important">
 			<div class="col-lg-12">
-				<div class="row" style="align-content:  center">
+				<div class="row" style="align-content: center !important; display: block !important; ">
 					<div>
                         <span style="color: white;">Made with <span class="fas fa-heart"></span> by <a  style="justify-content: center; color: white; font-weight: 900; text-decoration: underline"  href="https://jdlindsay.com" target="_blank">J.D. Lindsay</a></span>
 											</div><!-- .col -->
