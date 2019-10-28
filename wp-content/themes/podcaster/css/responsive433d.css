@@ -1327,7 +1327,13 @@
   }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 600px) {
+    .latest-episode {
+        background-position-x: -800px !important;
+    }
+}
+
+@media screen and (max-width: 450px) {
 
   /* Navigation & Menu */
   /* Responsive Menu (Drop-Down) */
