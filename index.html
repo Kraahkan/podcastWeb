@@ -24,7 +24,112 @@
     
     <style>
     
-     
+     $items: 4;
+$animation-time: 4s;
+$transition-time: .5s;
+$scale: 20%;
+
+$total-time: ($animation-time * $items);
+$scale-base-1: (1 + $scale / 100%);
+
+.slideshow {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slideshow-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: no-repeat 50% 50%;
+  background-size: cover;
+  animation-name: kenburns;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: $total-time;
+  opacity: 1;
+  transform: scale($scale-base-1);
+
+  @for $i from 1 through $items {
+    &:nth-child(#{$i}) {
+      animation-name: kenburns-#{$i};
+      z-index: ($items - $i);
+    }
+  }
+}
+
+@for $i from 1 through $items {
+  @keyframes kenburns-#{$i} {
+    $animation-time-percent: percentage($animation-time / $total-time);
+    $transition-time-percent: percentage($transition-time / $total-time);
+    
+    $t1: ($animation-time-percent * ($i - 1) - $transition-time-percent / 2);
+    $t2: ($animation-time-percent * ($i - 1) + $transition-time-percent / 2);
+    @if($t1 < 0%) { $t1: 0%; }
+    @if($t2 < 0%) { $t2: 0%; }
+
+    $t3: ($animation-time-percent * ($i) - $transition-time-percent / 2);
+    $t4: ($animation-time-percent * ($i) + $transition-time-percent / 2);
+    @if($t3 > 100%) { $t3: 100%; }
+    @if($t4 > 100%) { $t4: 100%; }
+
+    $t5: (100% - $transition-time-percent / 2);
+    $t6: (($t4 - $t1) * 100% / $t5);
+
+    #{$t1} { opacity: 1; transform: scale($scale-base-1); }
+    #{$t2} { opacity: 1; }
+    #{$t3} { opacity: 1; }
+    #{$t4} { opacity: 0; transform: scale(1); }
+    
+    @if($i != $items) {
+      100% { opacity: 0; transform: scale($scale-base-1); }
+    }
+    
+    @if($i == 1) {
+      $scale-plus: ($scale * (100% - $t5) / $t4);
+      $scale-plus-base-1: (1 + ($scale + $scale-plus) / 100%);
+    
+      #{$t5} { opacity: 0; transform: scale($scale-plus-base-1); }
+      100% { opacity: 1; }
+    }
+  }
+}
+
+
+// Presentational stuff
+h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  z-index: 99;
+  text-align: center;
+  font-family: Raleway, sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+  background-color: rgba(255,255,255,.75);
+  box-shadow: 0 1em 2em -1em rgba(0,0,0,.5);
+  padding: 1em 2em;
+  line-height: 1.5;
+  
+  small {
+    display: block;
+    text-transform: lowercase;
+    font-size: .7em;
+    
+    &:first-child {
+      border-bottom: 1px solid rgba(0,0,0,.25);
+      padding-bottom: .5em;
+    }
+    
+    &:last-child {
+      border-top: 1px solid rgba(0,0,0,.25);
+      padding-top: .5em;
+    }
+  }
+}
     </style>
     
     <script>
@@ -133,6 +238,28 @@ var pod_loadmore_params = {"ajaxurl":"http:\/\/demo.themestation.co\/podcaster-g
     
     
         <style type="text/css" title="dynamic-css" class="options-output">
+            
+            .kenburns {
+                animation: kenburns 20s infinite;
+            }
+            
+            @keyframes kenburns {
+    0% {
+      opacity: 0;
+    }
+    5% {
+      opacity: 1;
+    }
+    95% {
+        transform: scale3d(1.5, 1.5, 1.5) translate3d(-190px, -120px, 0px);
+        animation-timing-function: ease-in;
+        opacity: 1;
+    }
+    100% {
+        transform: scale3d(2, 2, 2) translate3d(-170px, -100px, 0px);
+        opacity: 0;
+    }
+}
             
             
             @font-face {
@@ -1157,7 +1284,7 @@ $.ajax({
     console.log(data.items[0].enclosure.link);
       
       
-       var title = '<h3 style="font-weight: 500; color:white !important; font-family: Oswald; margin: 0px; margin-top:24px;" class="textshadow">Featured Episode</h3><h1 style=" margin: 0px; margin-top: 6px; margin-bottom: 12px; ">' + data.items[0].title + '</h1>'
+       var title = '<h3 style="font-weight: 500; width:100%; color:white !important; font-family: Oswald; margin: 0px; margin-top:24px;" class="textshadow">Featured Episode</h3><h1 style=" margin: 0px; margin-top: 6px;  width:100%;  margin-bottom: 12px; " class="textshadow">' + data.items[0].title + '</h1>'
        var description = '<p class="textshadow">' + data.items[0].description + '</p>'
     
                                             
@@ -1231,9 +1358,9 @@ $.ajax({
 
 
 	<div data-stellar-background-ratio="0.5" class="latest-episode front-header  nav-transparent nav-not-sticky" style="background-color:#BFAC88; background-position: top 500px; background:  linear-gradient(
-      rgba(204,183,145,.25), 
+      rgba(204,183,145,.15), 
       rgba(0, 0, 0, .85)
-    ),url(wp-content/uploads/cover5.jpg) no-repeat center; background-repeat:no-repeat; background-size:cover;"><div id="loading_bg" class="">
+    ),url(wp-content/uploads/cover5.jpg) no-repeat center; background-repeat:no-repeat; background-size:cover;"><div></div><div id="loading_bg" class="">
 		<div class="circle-spinner"><div class="line"></div></div>
 		</div><div class="translucent" style="background-color: rgba(0,0,0,0);"><div class="container">
 								<div class="row align-fh-audio-player-left">
@@ -1245,16 +1372,16 @@ $.ajax({
                                         
                                         <div class="main-featured-post audio audio-url clearfix"><div class="">
                                             
-                                             <img class="" width="250" src="wp-content/uploads/logo.png"/>
+                                             <img class="textshadow" width="275" src="wp-content/uploads/logo.png"/>
                                             
                                             
                                             
-                                            </div><div id="latestTitle"></div>
+                                            </div>
                                             
                                             
                                             <div class="featured-excerpt audio style-2 excerpt-medium excerpt-position-above">
                                             
-										
+										<div id="latestTitle" ></div>
                                                 <div id="latestDescription"></div>
                                                 </div><div class="audio-player-container"><div class="audio_player regular-player"><audio class="wp-audio-shortcode" id="audio-1820-2" preload="none" style="width: 100%;" controls="controls"><source type="audio/mpeg" id="replaceAudio2" src="https://www.buzzsprout.com/218205/1672519-2-0-really-big-news.mp3" /><a id="replaceAudio" href="https://www.buzzsprout.com/218205/1672519-2-0-really-big-news.mp3"></a></audio></div></div></div><!-- .main-featured-posts --><div class="next-week next-week-show">
 				<div class="row"><div class="col-lg-6 col-md-6"><div class="content scheduled">
@@ -1342,7 +1469,7 @@ $.ajax({
 			</div>
 			
 							<div class="newsletter-container" style="padding-bottom: 80px; background-color:#BFAC88; background-position:0 0; background:  linear-gradient(
-      rgba(204,183,145,.25), 
+      rgba(204,183,145,0), 
       rgba(0, 0, 0, .6)
     ),url(wp-content/uploads/cover4.jpg);
   background-repeat:no-repeat; background-size:cover;">
